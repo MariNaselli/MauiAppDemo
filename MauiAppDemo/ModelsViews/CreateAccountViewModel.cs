@@ -69,6 +69,6 @@ public partial class CreateAccountViewModel : ObservableObject
             return;
         }
 
-            await Shell.Current.GoToAsync(nameof(HomePageView));
+        await Shell.Current.GoToAsync(nameof(HomePageView));
     }
 }

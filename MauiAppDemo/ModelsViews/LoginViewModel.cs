@@ -24,7 +24,8 @@ public partial class LoginViewModel : ObservableObject
 
     public LoginViewModel()
     {
-        
+        user = string.Empty;
+        password = string.Empty;
     }
 
     [RelayCommand]
