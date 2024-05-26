@@ -8,8 +8,14 @@ namespace MauiAppDemo
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
-            Routing.RegisterRoute(nameof(HomePageView), typeof(HomePageView));
+            
+            //Comentamos lo siguiente ya que se usa para la definicion
+            //de rutas adcionales como /perros/detalles
+            //Ver documentacion: Registro de rutas de la página de detalles
+
+            //Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
+            //Routing.RegisterRoute(nameof(HomePageView), typeof(HomePageView));
+
         }
     }
 }

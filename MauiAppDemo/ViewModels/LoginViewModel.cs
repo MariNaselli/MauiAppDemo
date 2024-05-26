@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using MauiAppDemo.Messages;
 using MauiAppDemo.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MauiAppDemo.ViewModels;
 
@@ -21,9 +18,11 @@ public partial class LoginViewModel : ObservableObject
     //[ObservableProperty]
     //private bool isOk = false;
 
+    private readonly IMessenger _messenger;
 
-    public LoginViewModel()
+    public LoginViewModel(IMessenger messenger)
     {
+        _messenger = messenger;
         user = string.Empty;
         password = string.Empty;
     }
@@ -37,31 +36,25 @@ public partial class LoginViewModel : ObservableObject
             {
                 await Application.Current.MainPage.DisplayAlert("Login Failed", "Please enter both username and password.", "OK");
             }
-            
+            return;
         }
-
-        //IsOk = false;
 
         if (User == "admin" && Password == "admin")
         {
-            //IsOk = true;
-            await Shell.Current.GoToAsync(nameof(HomePageView));
+            _messenger.Send(new NavigateTo("home"));
         }
         else
         {
-            //IsOk = false;
             if (Application.Current != null && Application.Current.MainPage != null)
             {
                 await Application.Current.MainPage.DisplayAlert("Login Failed", "Invalid username or password. Please try again.", "OK");
             }
-
         }
-
     }
 
     [RelayCommand]
-    public async Task NavigateToCreateAccountAsync()
+    public void NavigateToCreateAccount()
     {
-        await Shell.Current.GoToAsync(nameof(CreateAccountView));
+        _messenger.Send(new NavigateTo("createaccount"));
     }
 }

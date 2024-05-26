@@ -4,27 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiAppDemo"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
     Title="MauiAppDemo"
     xmlns:views="clr-namespace:MauiAppDemo.Views"
     >
 
-    <ShellItem>
-        <ShellSection>
-            <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginView}" Title="Login"/>
+    <!-- Agrupar las vistas relacionadas en el mismo ShellItem -->
+    <ShellItem Title="Account">
+        <ShellSection Title="Login">
+            <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginView}" />
+        </ShellSection>
+        <ShellSection Title="Create Account">
+            <ShellContent Route="createaccount" ContentTemplate="{DataTemplate views:CreateAccountView}" />
         </ShellSection>
     </ShellItem>
 
-    <ShellItem>
-        <ShellSection>
-            <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePageView}" Title="Home"/>
+    <FlyoutItem Title="App">
+        <ShellSection Title="Home">
+            <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePageView}" />
         </ShellSection>
-    </ShellItem>
-
-    <ShellItem>
-        <ShellSection>
-            <ShellContent Route="createaccount" ContentTemplate="{DataTemplate views:CreateAccountView}" Title="Create Account"/>
+        <ShellSection Title="Profile">
+            <ShellContent Route="profile" ContentTemplate="{DataTemplate views:ProfileView}" />
         </ShellSection>
-    </ShellItem>
+    </FlyoutItem>
 
+    <!-- Menu Items para acciones específicas -->
+    <MenuItem Text="Logout" Command="{Binding LogoutCommand}" />
 </Shell>
