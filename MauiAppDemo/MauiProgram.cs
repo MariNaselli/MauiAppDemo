@@ -1,4 +1,4 @@
-﻿using MauiAppDemo.ModelsViews;
+﻿using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

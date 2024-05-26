@@ -1,4 +1,4 @@
-﻿using MauiAppDemo.ModelsViews;
+﻿using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
 
 namespace MauiAppDemo

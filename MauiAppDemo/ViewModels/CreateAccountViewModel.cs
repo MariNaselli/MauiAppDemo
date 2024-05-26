@@ -1,16 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiAppDemo.Views;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 
-namespace MauiAppDemo.ModelsViews;
+namespace MauiAppDemo.ViewModels;
 
 public partial class CreateAccountViewModel : ObservableObject
 {
@@ -44,7 +37,12 @@ public partial class CreateAccountViewModel : ObservableObject
 
     public CreateAccountViewModel()
     {
-
+        User = string.Empty;
+        Password = string.Empty;
+        ConfirmPassword = string.Empty;
+        Name = string.Empty;
+        LastName = string.Empty;
+        Address = string.Empty;
     }
 
     [RelayCommand]

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiAppDemo.ModelsViews;
+namespace MauiAppDemo.ViewModels;
 
 public partial class LoginViewModel : ObservableObject
 {

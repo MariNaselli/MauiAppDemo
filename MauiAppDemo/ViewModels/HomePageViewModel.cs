@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MauiAppDemo.ModelsViews;
+namespace MauiAppDemo.ViewModels;
 
 public partial class HomePageViewModel : ObservableObject
 {
