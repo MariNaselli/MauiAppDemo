@@ -1,0 +1,211 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+.vscode/
+.vs/
+*.code-workspace
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*.dotCover
+*.orig
+*_ReSharper.*
+_ReSharper.Caches
+JetBrains*
+_ReSharper.Caches
+*.vcxproj.filters
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+.vscode-test/
+
+# Node.js directories
+node_modules/
+
+# Yarn Directories
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# StyleCop
+StyleCopReport.xml
+StyleCopCache.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Chutzpah Test files
+_Chutzpah*
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Configuration files
+appsettings*.json
+
+# DotNetCliTool references
+*.dotnetclitool
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git!
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Razor
+*.rzr
+*.css.g.cs
+*.cshtml.g.cs
+*.razor.g.cs
+*.razor.css.g.cs
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+
+# Cake
+tools/*
+# Uncomment if necessary
+# packages.config
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# VS for Mac
+.vscode/
+.vscode-test/
+.idea/
+.idea_modules/
+
+# Node.js directories
+node_modules/
+
+# Xamarin.Android
+*.apk
+*.ap_
+*.dex
+*.apk
+*.obb
+*.rs
+*.res
+*.db
+*.sdb
+*.uad
+*/res/*
+*/bin/*
+*/obj/*
+
+# Xamarin.iOS
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.framework
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.framework
+
+# MAUI specific
+bin/
+obj/
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.aab
+*.apk
+*.ap_
+
+# Build directories
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+*.psmdcp
+.nuget/
+packages/
+# Uncomment if necessary
+# !packages/build/
+# !packages/repositories.config
+
+# Enable "dotnet pack" to create these files, then ignore them
+*.nuspec
+*.psmdcp
+
+# Rider
+.idea/
+.idea_modules/
+*.sln.iml
+.idea/
+
+# .NET MAUI specific
+bin/
+obj/
+**/bin/
+**/obj/
