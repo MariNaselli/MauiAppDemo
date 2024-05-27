@@ -14,3 +14,5 @@ namespace MauiAppDemo.Services.Navigation
         }
     }
 }
+
+

@@ -9,6 +9,13 @@ namespace MauiAppDemo.Services.Users
 {
     public class UserAccountService : IUserAccountService
     {
+
+        public Task<bool> AuthenticateUserAsync(string user, string password)
+        {
+            return Task.FromResult(user == "admin" && password == "admin");
+        }
+
+
         private readonly List<UserAccount> _userAccounts = new();
 
         public Task AddUserAccountAsync(UserAccount account)

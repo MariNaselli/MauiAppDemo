@@ -9,16 +9,6 @@
     xmlns:views="clr-namespace:MauiAppDemo.Views"
     >
 
-    <!-- Agrupar las vistas relacionadas en el mismo ShellItem -->
-    <ShellItem Title="Account">
-        <ShellSection Title="Login">
-            <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginView}" />
-        </ShellSection>
-        <ShellSection Title="Create Account">
-            <ShellContent Route="createaccount" ContentTemplate="{DataTemplate views:CreateAccountView}" />
-        </ShellSection>
-    </ShellItem>
-
     <FlyoutItem Title="App">
         <ShellSection Title="Home">
             <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePageView}" />
@@ -30,4 +20,28 @@
 
     <!-- Menu Items para acciones específicas -->
     <MenuItem Text="Logout" Command="{Binding LogoutCommand}" />
+
+    <!-- Agrupar las vistas relacionadas en el mismo ShellItem -->
+    <!--<ShellItem Title="Account">
+        <ShellSection Title="Login">
+            <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginView}" />
+        </ShellSection>
+        <ShellSection Title="Create Account">
+            <ShellContent Route="createaccount" ContentTemplate="{DataTemplate views:CreateAccountView}" />
+        </ShellSection>
+    </ShellItem>
+    
+    
+
+    --><!--<FlyoutItem Title="App">
+        <ShellSection Title="Home">
+            <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePageView}" />
+        </ShellSection>
+        <ShellSection Title="Profile">
+            <ShellContent Route="profile" ContentTemplate="{DataTemplate views:ProfileView}" />
+        </ShellSection>
+    </FlyoutItem>-->
+
+    <!-- Menu Items para acciones específicas --><!--
+    <MenuItem Text="Logout" Command="{Binding LogoutCommand}" />-->
 </Shell>

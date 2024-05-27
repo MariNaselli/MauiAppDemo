@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using MauiAppDemo.Messages;
+using MauiAppDemo.Services.Users;
 using MauiAppDemo.Views;
 
 namespace MauiAppDemo.ViewModels;
@@ -19,10 +20,12 @@ public partial class LoginViewModel : ObservableObject
     //private bool isOk = false;
 
     private readonly IMessenger _messenger;
+    private readonly IUserAccountService _userAccountService;
 
-    public LoginViewModel(IMessenger messenger)
+    public LoginViewModel(IMessenger messenger , IUserAccountService userAccountService) 
     {
         _messenger = messenger;
+        _userAccountService = userAccountService;
         user = string.Empty;
         password = string.Empty;
     }
@@ -50,6 +53,8 @@ public partial class LoginViewModel : ObservableObject
                 await Application.Current.MainPage.DisplayAlert("Login Failed", "Invalid username or password. Please try again.", "OK");
             }
         }
+        //todo envio mensaje para cambiar shell 
+
     }
 
     [RelayCommand]

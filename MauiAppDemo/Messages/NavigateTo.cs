@@ -1,4 +1,5 @@
-﻿namespace MauiAppDemo.Messages
+﻿
+namespace MauiAppDemo.Messages
 {
     public class NavigateTo
     {
