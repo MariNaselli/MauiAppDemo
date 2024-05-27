@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using MauiAppDemo.Messages;
-using MauiAppDemo.Services.Navigation;
-using MauiAppDemo.ViewModels;
+using MauiAppDemo.Services.Authentication;
 using MauiAppDemo.Views;
 using System.Diagnostics;
 
@@ -9,57 +8,63 @@ namespace MauiAppDemo
 {
     public partial class App : Application
     {
-        public App()
+        private readonly IAuthService _authService;
+
+        public App(IAuthService authService)
         {
             InitializeComponent();
 
-            MainPage = new AuthShell();
+            _authService = authService;
 
-            //todo registracion para mensaje de cambio de shell 
-            //registra este mensaje y hacer el metodo
-            //WeakReferenceMessenger.Default.Register //OnMessageReceived
+            // Registrar los mensajes
+            WeakReferenceMessenger.Default.Register<AuthenticationMessage>(this, OnAuthenticationMessage);
+            WeakReferenceMessenger.Default.Register<LogoutMessage>(this, OnLogoutMessage);
 
-            WeakReferenceMessenger.Default.Register<NavigateTo>(this, OnNavigateTo);
-
-            Shell.Current.GoToAsync("//login");
-
+            // Validar el token al iniciar la aplicación
+            ValidateToken();
         }
 
-        private void OnNavigateTo(object recipient, NavigateTo message)
+        private async void ValidateToken()
         {
-            
+            if (await _authService.IsAuthenticatedAsync())
+            {
+                MainPage = new PrivateShell(_authService);
+                Shell.Current.Dispatcher.Dispatch(async () =>
+                {
+                    await Shell.Current.GoToAsync("//home");
+                });
+            }
+            else
+            {
+                MainPage = new PublicShell();
+                Shell.Current.Dispatcher.Dispatch(async () =>
+                {
+                    await Shell.Current.GoToAsync("//login");
+                });
+            }
+        }
+
+        private void OnAuthenticationMessage(object recipient, AuthenticationMessage message)
+        {
+            if (message.IsAuthenticated)
+            {
+                Debug.WriteLine("Authentication successful. Changing Shell.");
+                MainPage = new PrivateShell(_authService);
+                Shell.Current.Dispatcher.Dispatch(async () =>
+                {
+                    await Shell.Current.GoToAsync("//home");
+                });
+            }
+        }
+
+        private void OnLogoutMessage(object recipient, LogoutMessage message)
+        {
+            Debug.WriteLine("Logout successful. Changing Shell.");
+            MainPage = new PublicShell();
             Shell.Current.Dispatcher.Dispatch(async () =>
             {
-                if (message.Route == "//home")
-                {
-                    MainPage = new AppShell(); 
-                }
-  
-                await NavigationService.NavigateToAsync(message.Route);
-                
+                await Shell.Current.GoToAsync("//login");
             });
         }
-
-        //private void OnNavigateTo(object recipient, NavigateTo message)
-        //{
-        //    Shell.Current.Dispatcher.Dispatch(async () =>
-        //    {
-        //        await NavigationService.NavigateToAsync(message.Route);
-        //    });
-        //}
-
-
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    _messenger.Register<NavigateTo>(this, async (r, m) => await NavigationService.NavigateToAsync(m.Route));
-        //}
-
-
-        //protected override void OnDisappearing()
-        //{
-        //    base.OnDisappearing();
-        //    _messenger.Unregister<NavigateTo>(this);
-        //}
     }
 }

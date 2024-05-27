@@ -69,28 +69,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\HomePageView.xaml.cs">
-	    <DependentUpon>HomePageView.xaml</DependentUpon>
+	  <Compile Update="Shells\PrivateShell.xaml.cs">
+	    <DependentUpon>PrivateShell.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Shells\PublicShell.xaml.cs">
+	    <DependentUpon>PublicShell.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\CreateAccountPage.xaml.cs">
+	    <DependentUpon>CreateAccountPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\LoginPage.xaml.cs">
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\ProfilePage.xaml.cs">
+	    <DependentUpon>ProfilePage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Shells\AuthShell.xaml">
+	  <MauiXaml Update="Shells\PublicShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CreateAccountView.xaml">
+	  <MauiXaml Update="Views\CreateAccountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\HomePageView.xaml">
+	  <MauiXaml Update="Views\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ProfileView.xaml">
+	  <MauiXaml Update="Views\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

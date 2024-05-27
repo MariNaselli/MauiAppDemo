@@ -9,16 +9,11 @@ using System.Windows.Input;
 
 namespace MauiAppDemo.ViewModels;
 
-public partial class HomePageViewModel : ObservableObject
+public partial class HomeViewModel : ObservableObject
 {
 
-    public HomePageViewModel()
+    public HomeViewModel()
     {
-    }
-
-    [RelayCommand]   
-    private async Task OnNavigateBack()
-    {
-        await Shell.Current.GoToAsync("..");
+        
     }
 }

@@ -9,5 +9,7 @@ namespace MauiAppDemo.Services.Authentication
     public interface IAuthService
     {
         Task<bool> LoginAsync(string user, string password);
+        Task<bool> IsAuthenticatedAsync();
+        Task LogoutAsync();
     }
 }

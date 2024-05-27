@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="MauiAppDemo.AppShell"
+    x:Class="MauiAppDemo.PrivateShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiAppDemo"
@@ -11,10 +11,10 @@
 
     <FlyoutItem Title="App">
         <ShellSection Title="Home">
-            <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePageView}" />
+            <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePage}" />
         </ShellSection>
         <ShellSection Title="Profile">
-            <ShellContent Route="profile" ContentTemplate="{DataTemplate views:ProfileView}" />
+            <ShellContent Route="profile" ContentTemplate="{DataTemplate views:ProfilePage}" />
         </ShellSection>
     </FlyoutItem>
 

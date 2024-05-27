@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using MauiAppDemo.Services;
+using MauiAppDemo.Services.Authentication;
 using MauiAppDemo.Services.Users;
 using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
@@ -20,23 +21,24 @@ namespace MauiAppDemo
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
             // Registrar servicios
             builder.Services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
-
             builder.Services.AddSingleton<ICountryService, CountryService>();
-
             builder.Services.AddSingleton<IUserAccountService, UserAccountService>();
+            builder.Services.AddSingleton<IAuthService, AuthService>();
 
-            //builder.Services.AddSingleton<AppShellViewModel>();
-            builder.Services.AddSingleton<AppShell>();
-
+            //Registrar Pages y ViewModels
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<LoginViewModel>();
 
-            builder.Services.AddTransient<CreateAccountView>();
+            builder.Services.AddTransient<CreateAccountPage>();
             builder.Services.AddTransient<CreateAccountViewModel>();
 
-            builder.Services.AddTransient<ProfileView>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<HomeViewModel>();
+
+            builder.Services.AddTransient<ProfilePage>();
             builder.Services.AddTransient<ProfileViewModel>();
 
 #if DEBUG

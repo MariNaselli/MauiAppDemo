@@ -2,9 +2,9 @@ using System.Diagnostics;
 
 namespace MauiAppDemo.Views;
 
-public partial class AuthShell : Shell
+public partial class PublicShell : Shell
 {
-	public AuthShell()
+	public PublicShell()
 	{
 		InitializeComponent();
 

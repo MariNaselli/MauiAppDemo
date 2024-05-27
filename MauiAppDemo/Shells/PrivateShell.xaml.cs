@@ -1,25 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using MauiAppDemo.Services.Authentication;
 using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
 using System.Diagnostics;
 
 namespace MauiAppDemo;
 
-public partial class AppShell : Shell
+public partial class PrivateShell : Shell
 {
-    public AppShell()
-    {
+    private readonly IAuthService _authService;
 
+    public PrivateShell(IAuthService authService)
+    {
         InitializeComponent();
         LogoutCommand = new Command(OnLogout);
         BindingContext = this;  
-
+        _authService = authService;
     }
 
-    private static async void OnLogout()
+    private async void OnLogout()
     {
-        Application.Current.MainPage = new AuthShell();
-        await Shell.Current.GoToAsync("//login");
+        await _authService.LogoutAsync();
     }
 
     public Command LogoutCommand { get; }

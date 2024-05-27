@@ -13,7 +13,6 @@ namespace MauiAppDemo.ViewModels
 {
     public partial class CreateAccountViewModel : ObservableObject
     {
-        private readonly IMessenger _messenger;
         private readonly ICountryService _countryService;
         private readonly IUserAccountService _userAccountService;
 
@@ -51,7 +50,6 @@ namespace MauiAppDemo.ViewModels
         {
             _countryService = countryService;
             _userAccountService = userAccountService;
-            _messenger = messenger;
             User = string.Empty;
             Password = string.Empty;
             ConfirmPassword = string.Empty;
@@ -100,8 +98,6 @@ namespace MauiAppDemo.ViewModels
             };
 
             await _userAccountService.AddUserAccountAsync(newAccount);
-
-            _messenger.Send(new NavigateTo("home"));
         }
     }
 }

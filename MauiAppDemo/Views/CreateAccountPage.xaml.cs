@@ -2,9 +2,9 @@ using MauiAppDemo.ViewModels;
 
 namespace MauiAppDemo.Views;
 
-public partial class CreateAccountView : ContentPage
+public partial class CreateAccountPage : ContentPage
 {
-    public CreateAccountView(CreateAccountViewModel viewModel)
+    public CreateAccountPage(CreateAccountViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
