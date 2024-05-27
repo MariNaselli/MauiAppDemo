@@ -10,7 +10,6 @@ namespace MauiAppDemo.ViewModels;
 
 public partial class LoginViewModel : ObservableObject
 {
-    private readonly IMessenger _messenger;
     private readonly IAuthService _authService;
 
     [ObservableProperty]
@@ -19,9 +18,8 @@ public partial class LoginViewModel : ObservableObject
     [ObservableProperty]
     private string password;
    
-    public LoginViewModel(IMessenger messenger, IAuthService authService) 
+    public LoginViewModel(IAuthService authService) 
     {
-        _messenger = messenger;
         _authService = authService;
         user = string.Empty;
         password = string.Empty;
@@ -36,6 +34,8 @@ public partial class LoginViewModel : ObservableObject
             await _authService.LoginAsync(User, Password);
         }
     }
+
+    //Esto no se està usando porque el Command se està definiendo directamente en la shell privada .cs
 
     [RelayCommand]
     public async Task Logout()

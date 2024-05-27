@@ -9,7 +9,7 @@ namespace MauiAppDemo.Services.Authentication
     {
         private const string AuthTokenKey = "auth_token";
 
-        public async Task<bool> LoginAsync(string user, string password)
+        public async Task LoginAsync(string user, string password)
         {
             bool isAuthenticated = await Task.FromResult(user == "admin" && password == "admin");
 
@@ -17,11 +17,10 @@ namespace MauiAppDemo.Services.Authentication
             {
                 // Guardar el token (simulado)
                 await SecureStorage.SetAsync(AuthTokenKey, "fake_token");
-                // Enviar el mensaje de autenticación
-                WeakReferenceMessenger.Default.Send(new AuthenticationMessage(isAuthenticated));
             }
+            // Enviar el mensaje de autenticación
+            WeakReferenceMessenger.Default.Send(new AuthenticationMessage(isAuthenticated));
 
-            return isAuthenticated;
         }
 
         public async Task<bool> IsAuthenticatedAsync()
@@ -36,7 +35,7 @@ namespace MauiAppDemo.Services.Authentication
             SecureStorage.Remove(AuthTokenKey);
 
             // Enviar el mensaje de logout
-            WeakReferenceMessenger.Default.Send(new LogoutMessage());
+            WeakReferenceMessenger.Default.Send(new AuthenticationMessage(false));
 
             // Simular una operación asíncrona para ilustrar el uso de await
             await Task.Delay(1);

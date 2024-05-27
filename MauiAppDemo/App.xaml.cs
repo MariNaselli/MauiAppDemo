@@ -18,7 +18,6 @@ namespace MauiAppDemo
 
             // Registrar los mensajes
             WeakReferenceMessenger.Default.Register<AuthenticationMessage>(this, OnAuthenticationMessage);
-            WeakReferenceMessenger.Default.Register<LogoutMessage>(this, OnLogoutMessage);
 
             // Validar el token al iniciar la aplicación
             ValidateToken();
@@ -55,16 +54,16 @@ namespace MauiAppDemo
                     await Shell.Current.GoToAsync("//home");
                 });
             }
+            else
+            {
+                Debug.WriteLine("Logout successful. Changing Shell.");
+                MainPage = new PublicShell();
+                Shell.Current.Dispatcher.Dispatch(async () =>
+                {
+                    await Shell.Current.GoToAsync("//login");
+                });
+            }
         }
 
-        private void OnLogoutMessage(object recipient, LogoutMessage message)
-        {
-            Debug.WriteLine("Logout successful. Changing Shell.");
-            MainPage = new PublicShell();
-            Shell.Current.Dispatcher.Dispatch(async () =>
-            {
-                await Shell.Current.GoToAsync("//login");
-            });
-        }
     }
 }
