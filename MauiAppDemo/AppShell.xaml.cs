@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
+using System.Diagnostics;
 
 namespace MauiAppDemo;
 
@@ -8,15 +9,20 @@ public partial class AppShell : Shell
 {
     public AppShell()
     {
-        InitializeComponent();
-        
-        //Comentamos lo siguiente ya que se usa para la definicion
-        //de rutas adcionales como /perros/detalles
-        //Ver documentacion: Registro de rutas de la página de detalles
 
-        //Routing.RegisterRoute(nameof(CreateAccountView), typeof(CreateAccountView));
-        //Routing.RegisterRoute(nameof(HomePageView), typeof(HomePageView));
+        InitializeComponent();
+        LogoutCommand = new Command(OnLogout);
+        BindingContext = this;  
 
     }
 
+    private static async void OnLogout()
+    {
+        //Debug.WriteLine("Logout command executed");
+ 
+        Application.Current.MainPage = new AuthShell();
+        await Shell.Current.GoToAsync("//login");
+    }
+
+    public Command LogoutCommand { get; }
 }

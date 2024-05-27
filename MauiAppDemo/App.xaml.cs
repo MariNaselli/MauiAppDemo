@@ -3,6 +3,7 @@ using MauiAppDemo.Messages;
 using MauiAppDemo.Services.Navigation;
 using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
+using System.Diagnostics;
 
 namespace MauiAppDemo
 {
@@ -27,10 +28,12 @@ namespace MauiAppDemo
 
         private void OnNavigateTo(object recipient, NavigateTo message)
         {
+            Debug.WriteLine($"Navigating to: {message.Route}");
             Shell.Current.Dispatcher.Dispatch(async () =>
             {
                 if (message.Route == "///home")
                 {
+                    Debug.WriteLine("Changing Shell to AppShell.");
                     MainPage = new AppShell();
                     await Shell.Current.GoToAsync("//home");
                 }
