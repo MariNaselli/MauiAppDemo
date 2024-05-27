@@ -18,8 +18,6 @@ public partial class AppShell : Shell
 
     private static async void OnLogout()
     {
-        //Debug.WriteLine("Logout command executed");
- 
         Application.Current.MainPage = new AuthShell();
         await Shell.Current.GoToAsync("//login");
     }

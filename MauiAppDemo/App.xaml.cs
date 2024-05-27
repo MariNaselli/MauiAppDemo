@@ -9,38 +9,34 @@ namespace MauiAppDemo
 {
     public partial class App : Application
     {
-        private readonly IMessenger _messenger;
         public App()
         {
             InitializeComponent();
 
             MainPage = new AuthShell();
-            _messenger = WeakReferenceMessenger.Default;
-
-            _messenger.Register<NavigateTo>(this, OnNavigateTo);
-            
-            Shell.Current.GoToAsync("//login");
 
             //todo registracion para mensaje de cambio de shell 
             //registra este mensaje y hacer el metodo
             //WeakReferenceMessenger.Default.Register //OnMessageReceived
+
+            WeakReferenceMessenger.Default.Register<NavigateTo>(this, OnNavigateTo);
+
+            Shell.Current.GoToAsync("//login");
+
         }
 
         private void OnNavigateTo(object recipient, NavigateTo message)
         {
-            Debug.WriteLine($"Navigating to: {message.Route}");
+            
             Shell.Current.Dispatcher.Dispatch(async () =>
             {
-                if (message.Route == "///home")
+                if (message.Route == "//home")
                 {
-                    Debug.WriteLine("Changing Shell to AppShell.");
-                    MainPage = new AppShell();
-                    await Shell.Current.GoToAsync("//home");
+                    MainPage = new AppShell(); 
                 }
-                else
-                {
-                    await NavigationService.NavigateToAsync(message.Route);
-                }
+  
+                await NavigationService.NavigateToAsync(message.Route);
+                
             });
         }
 

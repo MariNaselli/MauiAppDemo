@@ -30,7 +30,7 @@ namespace MauiAppDemo
             //builder.Services.AddSingleton<AppShellViewModel>();
             builder.Services.AddSingleton<AppShell>();
 
-            builder.Services.AddSingleton<LoginView>();
+            builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<LoginViewModel>();
 
             builder.Services.AddTransient<CreateAccountView>();

@@ -1,20 +1,23 @@
 using CommunityToolkit.Mvvm.Messaging;
+using CoreData;
 using MauiAppDemo.Messages;
+using MauiAppDemo.Services.Authentication;
 using MauiAppDemo.Services.Navigation;
 using MauiAppDemo.ViewModels;
 
 namespace MauiAppDemo.Views
 {
-    public partial class LoginView : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        //private readonly IMessenger _messenger;
-
-        public LoginView(LoginViewModel vm)
+        public LoginPage(LoginViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = vm;
+            BindingContext = viewModel;
+
             //_messenger = WeakReferenceMessenger.Default;
         }
+
+
 
         //protected override void OnAppearing()
         //{

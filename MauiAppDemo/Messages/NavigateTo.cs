@@ -7,7 +7,7 @@ namespace MauiAppDemo.Messages
 
         public NavigateTo(string route)
         {
-            Route = "///" + route;
+            Route = "//" + route;
         }
     }
 }
