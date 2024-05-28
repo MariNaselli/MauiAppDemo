@@ -24,7 +24,7 @@
                 <VerticalStackLayout Margin="30,0,30,0">
                     <Label Text="Email:" Margin="0,20,0,0" VerticalOptions="Center"/>
                     <Entry Placeholder="example@gmail.com"
-                           Text="{Binding User}"
+                           Text="{Binding Username}"
                            VerticalOptions="Center"/>
 
                     <Label Text="Password:" Margin="0,20,0,0" VerticalOptions="Center"/>

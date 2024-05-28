@@ -1,9 +1,4 @@
-﻿using MauiAppDemo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entities;
 
 namespace MauiAppDemo.Services.Users
 {
@@ -11,7 +6,7 @@ namespace MauiAppDemo.Services.Users
     {
 
         
-        Task AddUserAccountAsync(UserAccount account);
-        Task<List<UserAccount>> GetUserAccountsAsync();
+        Task AddUserAccountAsync(User user);
+        Task<List<User>> GetUserAccountsAsync();
     }
 }

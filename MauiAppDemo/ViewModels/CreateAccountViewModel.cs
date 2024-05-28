@@ -1,11 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using MauiAppDemo.Messages;
-using MauiAppDemo.Models;
+using Entities;
 using MauiAppDemo.Services;
 using MauiAppDemo.Services.Users;
-using MauiAppDemo.Views;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -17,7 +15,7 @@ namespace MauiAppDemo.ViewModels
         private readonly IUserAccountService _userAccountService;
 
         [ObservableProperty]
-        private string user;
+        private string username;
 
         [ObservableProperty]
         private string password;
@@ -50,7 +48,7 @@ namespace MauiAppDemo.ViewModels
         {
             _countryService = countryService;
             _userAccountService = userAccountService;
-            User = string.Empty;
+            Username = string.Empty;
             Password = string.Empty;
             ConfirmPassword = string.Empty;
             Name = string.Empty;
@@ -72,7 +70,7 @@ namespace MauiAppDemo.ViewModels
         [RelayCommand]
         public async Task CreateAccount()
         {
-            if (string.IsNullOrWhiteSpace(User) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword) ||
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword) ||
                 string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(LastName) || string.IsNullOrWhiteSpace(Address))
             {
                 //Error
@@ -85,9 +83,9 @@ namespace MauiAppDemo.ViewModels
                 return;
             }
 
-            var newAccount = new UserAccount
+            var newUser = new User
             {
-                User = User,
+                Username = Username,
                 Password = Password,
                 Name = Name,
                 LastName = LastName,
@@ -97,7 +95,7 @@ namespace MauiAppDemo.ViewModels
                 AcceptsMarketing = AcceptsMarketing
             };
 
-            await _userAccountService.AddUserAccountAsync(newAccount);
+            await _userAccountService.AddUserAccountAsync(newUser);
         }
     }
 }

@@ -1,27 +1,51 @@
 ﻿using MauiAppDemo.Messages;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Threading.Tasks;
+using System.Net.Http.Json;
+using MauiAppDemo.Services.Auth;
 
 
 namespace MauiAppDemo.Services.Authentication
 {
     public class AuthService : IAuthService
     {
-        private const string AuthTokenKey = "auth_token";
+        private const string AuthTokenKey = "";
 
-        public async Task LoginAsync(string user, string password)
+        private readonly HttpClient _httpClient;
+
+        public AuthService(HttpClient httpClient)
         {
-            bool isAuthenticated = await Task.FromResult(user == "admin" && password == "admin");
-
-            if (isAuthenticated)
-            {
-                // Guardar el token (simulado)
-                await SecureStorage.SetAsync(AuthTokenKey, "fake_token");
-            }
-            // Enviar el mensaje de autenticación
-            WeakReferenceMessenger.Default.Send(new AuthenticationMessage(isAuthenticated));
-
+            _httpClient = httpClient;
         }
+
+        public async Task LoginAsync(string username, string password)
+        {
+            var loginRequest = new { Username = username, Password = password };
+            var response = await _httpClient.PostAsJsonAsync("/api/users/login", loginRequest);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                if (result != null && !string.IsNullOrEmpty(result.Token))
+                {
+                    // Guardar el token
+                    await SecureStorage.SetAsync(AuthTokenKey, result.Token);
+                    // Enviar el mensaje de autenticación
+                    WeakReferenceMessenger.Default.Send(new AuthenticationMessage(true));
+                }
+                else
+                {
+                    // Enviar el mensaje de autenticación fallida
+                    WeakReferenceMessenger.Default.Send(new AuthenticationMessage(false));
+                }
+            }
+            else
+            {
+                // Enviar el mensaje de autenticación fallida
+                WeakReferenceMessenger.Default.Send(new AuthenticationMessage(false));
+            }
+        }
+
 
         public async Task<bool> IsAuthenticatedAsync()
         {

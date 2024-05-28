@@ -95,7 +95,7 @@ _Chutzpah*
 ScaffoldingReadMe.txt
 
 # Configuration files
-appsettings*.json
+# appsettings*.json
 
 # DotNetCliTool references
 *.dotnetclitool
@@ -149,7 +149,6 @@ node_modules/
 *.obb
 *.rs
 *.res
-*.db
 *.sdb
 *.uad
 */res/*
