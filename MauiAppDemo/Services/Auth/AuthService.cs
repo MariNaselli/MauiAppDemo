@@ -15,10 +15,10 @@ namespace MauiAppDemo.Services.Authentication
 
             if (isAuthenticated)
             {
-                // Guardar el token (simulado)
+                // Guarda el token (simulado)
                 await SecureStorage.SetAsync(AuthTokenKey, "fake_token");
             }
-            // Enviar el mensaje de autenticación
+            // Envia el mensaje de autenticación
             WeakReferenceMessenger.Default.Send(new AuthenticationMessage(isAuthenticated));
 
         }
@@ -31,13 +31,13 @@ namespace MauiAppDemo.Services.Authentication
 
         public async Task LogoutAsync()
         {
-            // Remover el token
+            // Remueve el token
             SecureStorage.Remove(AuthTokenKey);
 
-            // Enviar el mensaje de logout
+            // Envia el mensaje de logout
             WeakReferenceMessenger.Default.Send(new AuthenticationMessage(false));
 
-            // Simular una operación asíncrona para ilustrar el uso de await
+            // Simula una operación asíncrona para ilustrar el uso de await
             await Task.Delay(1);
         }
     }

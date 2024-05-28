@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using MauiAppDemo.Messages;
 using MauiAppDemo.Services.Authentication;
+using MauiAppDemo.Shells;
 using MauiAppDemo.Views;
 using System.Diagnostics;
 
@@ -16,31 +17,32 @@ namespace MauiAppDemo
 
             _authService = authService;
 
-            // Registrar los mensajes
+            // Registra los mensajes
             WeakReferenceMessenger.Default.Register<AuthenticationMessage>(this, OnAuthenticationMessage);
 
-            // Validar el token al iniciar la aplicación
+            // Valida el token al iniciar la aplicación
             ValidateToken();
         }
 
         private async void ValidateToken()
         {
+            //tengo problemas aca con el emulador(si comento esto me funciona)
             if (await _authService.IsAuthenticatedAsync())
-            {
+                {
                 MainPage = new PrivateShell(_authService);
                 Shell.Current.Dispatcher.Dispatch(async () =>
                 {
                     await Shell.Current.GoToAsync("//home");
                 });
             }
-            else
+           else
             {
-                MainPage = new PublicShell();
-                Shell.Current.Dispatcher.Dispatch(async () =>
+               MainPage = new PublicShell();
+               Shell.Current.Dispatcher.Dispatch(async () =>
                 {
                     await Shell.Current.GoToAsync("//login");
                 });
-            }
+           }
         }
 
         private void OnAuthenticationMessage(object recipient, AuthenticationMessage message)

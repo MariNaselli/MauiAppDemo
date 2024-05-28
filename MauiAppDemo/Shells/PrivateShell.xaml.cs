@@ -4,7 +4,7 @@ using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
 using System.Diagnostics;
 
-namespace MauiAppDemo;
+namespace MauiAppDemo.Shells;
 
 public partial class PrivateShell : Shell
 {

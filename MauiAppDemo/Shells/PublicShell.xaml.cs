@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace MauiAppDemo.Views;
+namespace MauiAppDemo.Shells;
 
 public partial class PublicShell : Shell
 {

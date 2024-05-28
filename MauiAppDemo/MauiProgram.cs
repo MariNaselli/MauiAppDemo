@@ -26,7 +26,7 @@ namespace MauiAppDemo
             builder.Services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             builder.Services.AddSingleton<ICountryService, CountryService>();
             builder.Services.AddSingleton<IUserAccountService, UserAccountService>();
-            builder.Services.AddSingleton<IAuthService, AuthService>();
+            builder.Services.AddTransient<IAuthService, AuthService>();
 
             //Registrar Pages y ViewModels
             builder.Services.AddSingleton<LoginPage>();
