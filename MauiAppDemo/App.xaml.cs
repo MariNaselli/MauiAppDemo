@@ -17,6 +17,8 @@ namespace MauiAppDemo
 
             _authService = authService;
 
+          
+
             // Registra los mensajes
             WeakReferenceMessenger.Default.Register<AuthenticationMessage>(this, OnAuthenticationMessage);
 
@@ -26,9 +28,11 @@ namespace MauiAppDemo
 
         private async void ValidateToken()
         {
+
             //tengo problemas aca con el emulador(si comento esto me funciona)
             if (await _authService.IsAuthenticatedAsync())
                 {
+                Debug.WriteLine("Authentication successful. Changing Shell.");
                 MainPage = new PrivateShell(_authService);
                 Shell.Current.Dispatcher.Dispatch(async () =>
                 {
@@ -37,7 +41,8 @@ namespace MauiAppDemo
             }
            else
             {
-               MainPage = new PublicShell();
+                Debug.WriteLine("Logout successful. Changing Shell.");
+                MainPage = new PublicShell();
                Shell.Current.Dispatcher.Dispatch(async () =>
                 {
                     await Shell.Current.GoToAsync("//login");
@@ -47,6 +52,7 @@ namespace MauiAppDemo
 
         private void OnAuthenticationMessage(object recipient, AuthenticationMessage message)
         {
+
             if (message.IsAuthenticated)
             {
                 Debug.WriteLine("Authentication successful. Changing Shell.");
@@ -66,6 +72,7 @@ namespace MauiAppDemo
                 });
             }
         }
+            
 
     }
 }

@@ -89,6 +89,7 @@ namespace MauiAppDemo.ViewModels
             {
                 User = User,
                 Password = Password,
+                ConfirmPassword = ConfirmPassword,
                 Name = Name,
                 LastName = LastName,
                 Address = Address,

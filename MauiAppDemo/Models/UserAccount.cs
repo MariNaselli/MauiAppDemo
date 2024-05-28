@@ -8,6 +8,7 @@ namespace MauiAppDemo.Models
 {
     public class UserAccount
     {
+        
         public required string User { get; set; }
         public required string Password { get; set; }
         public required string ConfirmPassword {  get; set; }

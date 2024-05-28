@@ -2,6 +2,7 @@
 using MauiAppDemo.Services;
 using MauiAppDemo.Services.Authentication;
 using MauiAppDemo.Services.Users;
+using MauiAppDemo.Shells;
 using MauiAppDemo.ViewModels;
 using MauiAppDemo.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,7 @@ namespace MauiAppDemo
             builder.Services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             builder.Services.AddSingleton<ICountryService, CountryService>();
             builder.Services.AddSingleton<IUserAccountService, UserAccountService>();
-            builder.Services.AddTransient<IAuthService, AuthService>();
+            builder.Services.AddSingleton<IAuthService, AuthService>();
 
             //Registrar Pages y ViewModels
             builder.Services.AddSingleton<LoginPage>();
@@ -40,6 +41,8 @@ namespace MauiAppDemo
 
             builder.Services.AddTransient<ProfilePage>();
             builder.Services.AddTransient<ProfileViewModel>();
+
+            
 
 #if DEBUG
             builder.Logging.AddDebug();
