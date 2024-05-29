@@ -45,7 +45,7 @@
                       VerticalOptions="Center"/>
                         <Entry Grid.Column="1"
                        Placeholder="example@gamil.com"
-                       Text="{Binding User}"
+                       Text="{Binding Username}"
                        VerticalOptions="Center"
                        />
 

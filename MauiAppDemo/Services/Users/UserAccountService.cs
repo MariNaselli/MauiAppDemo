@@ -9,18 +9,35 @@ namespace MauiAppDemo.Services.Users
 {
     public class UserAccountService : IUserAccountService
     {
-
-        private readonly List<UserAccount> _userAccounts = new();
-
-        public Task AddUserAccountAsync(UserAccount account)
+        private readonly UserDatabase _userDatabase;
+        //private readonly List<User> _userAccounts = new();
+        public UserAccountService(UserDatabase userDatabase)
         {
-            _userAccounts.Add(account);
-            return Task.CompletedTask;
+            _userDatabase = userDatabase;
+        }
+        public async Task AddUserAccountAsync(User user)
+        {
+            await _userDatabase.SaveUserAsync(user);
         }
 
-        public Task<List<UserAccount>> GetUserAccountsAsync()
+        public async Task<List<User>> GetUserAccountsAsync()
         {
-            return Task.FromResult(_userAccounts);
+            return await _userDatabase.GetUsersAsync();
         }
+
+        //public async Task<User> GetUserByUsernameAndPasswordAsync(string username, string password)
+        //{
+        //    return await _userDatabase.GetUserByUsernameAndPasswordAsync(username, password);
+        //}
+        //public Task AddUserAccountAsync(User account)
+        //{
+        //    _userAccounts.Add(account);
+        //    return Task.CompletedTask;
+        //}
+
+        //public Task<List<User>> GetUserAccountsAsync()
+        //{
+        //    return Task.FromResult(_userAccounts);
+        //}
     }
 }

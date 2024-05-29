@@ -17,7 +17,7 @@ namespace MauiAppDemo.ViewModels
         private readonly IUserAccountService _userAccountService;
 
         [ObservableProperty]
-        private string user;
+        private string username;
 
         [ObservableProperty]
         private string password;
@@ -50,7 +50,7 @@ namespace MauiAppDemo.ViewModels
         {
             _countryService = countryService;
             _userAccountService = userAccountService;
-            User = string.Empty;
+            Username = string.Empty;
             Password = string.Empty;
             ConfirmPassword = string.Empty;
             Name = string.Empty;
@@ -72,7 +72,7 @@ namespace MauiAppDemo.ViewModels
         [RelayCommand]
         public async Task CreateAccount()
         {
-            if (string.IsNullOrWhiteSpace(User) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword) ||
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword) ||
                 string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(LastName) || string.IsNullOrWhiteSpace(Address))
             {
                 //Error
@@ -85,9 +85,9 @@ namespace MauiAppDemo.ViewModels
                 return;
             }
 
-            var newAccount = new UserAccount
-            {
-                User = User,
+            var newUser = new User
+            {   
+                Username = Username,
                 Password = Password,
                 ConfirmPassword = ConfirmPassword,
                 Name = Name,
@@ -98,7 +98,7 @@ namespace MauiAppDemo.ViewModels
                 AcceptsMarketing = AcceptsMarketing
             };
 
-            await _userAccountService.AddUserAccountAsync(newAccount);
+            await _userAccountService.AddUserAccountAsync(newUser);
         }
     }
 }

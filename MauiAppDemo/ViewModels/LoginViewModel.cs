@@ -13,7 +13,7 @@ public partial class LoginViewModel : ObservableObject
     private readonly IAuthService _authService;
 
     [ObservableProperty]
-    private string user;
+    private string username;
 
     [ObservableProperty]
     private string password;
@@ -21,7 +21,7 @@ public partial class LoginViewModel : ObservableObject
     public LoginViewModel(IAuthService authService) 
     {
         _authService = authService;
-        user = string.Empty;
+        username = string.Empty;
         password = string.Empty;
     }
 
@@ -29,9 +29,9 @@ public partial class LoginViewModel : ObservableObject
     public async Task Login()
     {
 
-        if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Password))
+        if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
         {
-            await _authService.LoginAsync(User, Password);
+            await _authService.LoginAsync(Username, Password);
         }
     }
 

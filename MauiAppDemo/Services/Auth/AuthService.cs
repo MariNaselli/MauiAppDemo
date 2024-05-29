@@ -9,9 +9,9 @@ namespace MauiAppDemo.Services.Authentication
     {
         private const string AuthTokenKey = "auth_token";
 
-        public async Task LoginAsync(string user, string password)
+        public async Task LoginAsync(string username, string password)
         {
-            bool isAuthenticated = await Task.FromResult(user == "admin" && password == "admin");
+            bool isAuthenticated = await Task.FromResult(username == "admin" && password == "admin");
 
             if (isAuthenticated)
             {

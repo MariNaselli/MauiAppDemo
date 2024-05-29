@@ -28,6 +28,7 @@ namespace MauiAppDemo
             builder.Services.AddSingleton<ICountryService, CountryService>();
             builder.Services.AddSingleton<IUserAccountService, UserAccountService>();
             builder.Services.AddSingleton<IAuthService, AuthService>();
+            builder.Services.AddSingleton<UserDatabase>();
 
             //Registrar Pages y ViewModels
             builder.Services.AddSingleton<LoginPage>();

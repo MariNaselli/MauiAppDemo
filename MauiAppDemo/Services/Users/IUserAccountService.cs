@@ -11,7 +11,7 @@ namespace MauiAppDemo.Services.Users
     {
 
         
-        Task AddUserAccountAsync(UserAccount account);
-        Task<List<UserAccount>> GetUserAccountsAsync();
+        Task AddUserAccountAsync(User user);
+        Task<List<User>> GetUserAccountsAsync();
     }
 }
